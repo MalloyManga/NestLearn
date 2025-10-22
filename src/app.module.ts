@@ -6,11 +6,12 @@ import { Module } from '@nestjs/common'
 import { AppController } from './app.controller.js'
 // 导入这个模块需要管理的服务（提供者）。
 import { AppService } from './app.service.js'
+import { UsersModule } from './users/users.module.js'
 
 @Module({
   // imports: 用来导入其他模块。如果你的应用变大了，比如有了一个 UserModule，你就会在这里写 [UserModule]。
   // 这类似于在 Express 的主文件中 app.use('/users', userRoutes)。
-  imports: [],
+  imports: [UsersModule],
   // controllers: 声明这个模块有哪些控制器（处理路由和请求）。
   // Nest 会自动根据控制器里的装饰器（@Get, @Post 等）来设置路由。
   // 这类似于在 Express 中 app.use('/', router)
