@@ -8,15 +8,15 @@ import { AppModule } from './app.module'
 
 // 使用 async/await 是因为创建和启动应用的过程是异步的。
 async function bootstrap() {
-  // NestFactory.create() 会创建一个 Nest 应用实例。
-  // 传入的 AppModule 告诉 Nest 应用的根模块是哪个。
-  // 这一步类似于 const app = express(); 创建了一个 Express 应用实例。
-  const app = await NestFactory.create(AppModule)
+    // NestFactory.create() 会创建一个 Nest 应用实例。
+    // 传入的 AppModule 告诉 Nest 应用的根模块是哪个。
+    // 这一步类似于 const app = express(); 创建了一个 Express 应用实例。
+    const app = await NestFactory.create(AppModule)
 
-  // 启动 HTTP 服务器，监听指定端口。
-  // process.env.PORT ?? 3000 的写法表示优先使用环境变量中的 PORT，如果没有则使用 3000。
-  // 这和 Express 中的 app.listen(3000, () => console.log('Server running')) 功能完全一样。
-  await app.listen(process.env.PORT ?? 3000)
+    // 启动 HTTP 服务器，监听指定端口。
+    // process.env.PORT ?? 3000 的写法表示优先使用环境变量中的 PORT，如果没有则使用 3000。
+    // 这和 Express 中的 app.listen(3000, () => console.log('Server running')) 功能完全一样。
+    await app.listen(process.env.PORT ?? 3000)
 }
 
 // 调用 bootstrap 函数，启动应用。

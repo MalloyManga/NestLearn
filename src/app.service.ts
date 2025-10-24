@@ -9,10 +9,10 @@ import { Injectable } from '@nestjs/common'
 // 当你在其他地方需要 AppService 的实例时，NestJS 的 DI 容器会自动创建并提供它。
 @Injectable() // 标记可以被注入
 export class AppService {
-  // 这是一个简单的方法，它包含了这个服务要执行的“业务逻辑”。
-  // 在这个例子中，逻辑只是返回一个字符串。
-  // 在实际应用中，这里可能会包含数据库查询（例如使用 Prisma）、调用其他 API、进行复杂计算等。
-  getHello(): string {
-    return 'Hello World!'
-  }
+    // 这是一个简单的方法，它包含了这个服务要执行的“业务逻辑”。
+    // 在这个例子中，逻辑只是返回一个字符串。
+    // 在实际应用中，这里可能会包含数据库查询（例如使用 Prisma）、调用其他 API、进行复杂计算等。
+    getHello(): string {
+        return 'Hello World!'
+    }
 }
