@@ -11,9 +11,9 @@ export class UsersService {
                 id
             }
         })
-        // if (!userInfo) {
-        //     throw new Error('foo')
-        // }
+        if (!userInfo) {
+            throw new Error('foo') // Error handle? to be added...
+        }
         return userInfo
     }
 }

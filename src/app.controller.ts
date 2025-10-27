@@ -5,7 +5,7 @@ import { AppService } from './app.service.js'
 
 // @Controller() 装饰器定义了一个控制器。括号里可以传入路径前缀，比如 @Controller('api/v1')。
 // 这里为空，表示它处理根路径的请求。这类似于 const router = express.Router();
-@Controller('/foo')
+@Controller('')
 export class AppController {
     // 这是构造函数，在这里进行了“依赖注入”
     // Nest 会自动创建 AppService 的实例，并把它赋值给 this.appService。

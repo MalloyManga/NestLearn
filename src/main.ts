@@ -4,7 +4,14 @@
 import { NestFactory } from '@nestjs/core'
 // 导入根模块 AppModule。
 // 在 Nest 中，应用是由模块组织的, AppModule 是所有其他模块的根，类似于 Vue/Nuxt 应用中的根组件或根实例
-import { AppModule } from './app.module'
+import { AppModule } from './app.module.js'
+
+// This is a well-known workaround for JSON serialization for BigInt
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+;(BigInt.prototype as any).toJSON = function () {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+    return this.toString() // 这里 this 指向自动包装时 那个临时创建的BigInt对象
+}
 
 // 使用 async/await 是因为创建和启动应用的过程是异步的。
 async function bootstrap() {
@@ -20,4 +27,4 @@ async function bootstrap() {
 }
 
 // 调用 bootstrap 函数，启动应用。
-bootstrap()
+await bootstrap() // 这里一开始报错 加上await 之后发现是commonjs 故在package里添加新的字段
