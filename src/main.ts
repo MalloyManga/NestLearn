@@ -5,6 +5,7 @@ import { NestFactory } from '@nestjs/core'
 // 导入根模块 AppModule。
 // 在 Nest 中，应用是由模块组织的, AppModule 是所有其他模块的根，类似于 Vue/Nuxt 应用中的根组件或根实例
 import { AppModule } from './app.module.js'
+import { ValidationPipe } from '@nestjs/common'
 
 // This is a well-known workaround for JSON serialization for BigInt
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
@@ -19,7 +20,7 @@ async function bootstrap() {
     // 传入的 AppModule 告诉 Nest 应用的根模块是哪个。
     // 这一步类似于 const app = express(); 创建了一个 Express 应用实例。
     const app = await NestFactory.create(AppModule)
-
+    app.useGlobalPipes(new ValidationPipe())
     // 启动 HTTP 服务器，监听指定端口。
     // process.env.PORT ?? 3000 的写法表示优先使用环境变量中的 PORT，如果没有则使用 3000。
     // 这和 Express 中的 app.listen(3000, () => console.log('Server running')) 功能完全一样。

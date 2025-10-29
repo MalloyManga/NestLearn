@@ -1,5 +1,13 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common'
+import {
+    Body,
+    Controller,
+    Get,
+    Param,
+    ParseIntPipe,
+    Post
+} from '@nestjs/common'
 import { UsersService } from './users.service.js'
+import { CreateUserDto } from './dto/create-user.dto.js'
 
 @Controller('users')
 export class UsersController {
@@ -10,5 +18,10 @@ export class UsersController {
         const userInfo = await this.usersService.getUser(BigInt(userId))
 
         return userInfo
+    }
+
+    @Post('create')
+    async createUser(@Body() newUserInfo: CreateUserDto) {
+        return await this.usersService.createUser(newUserInfo)
     }
 }
